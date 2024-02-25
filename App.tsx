@@ -1,15 +1,9 @@
 import { PropsWithChildren } from "react";
 import { StyleSheet, Text } from "react-native";
+import { Router } from "./src/core/routes";
 
 export default function App() {
-  return <></>
-  // return (
-  //   <SafeAreaView style={styles.container}>
-  //     <Component>Open the theka!</Component>
-  //     <StatusBar style="auto" />
-  //     <TouchableOpacity></TouchableOpacity>
-  //   </SafeAreaView>
-  );
+  return <Router />;
 }
 const Component = ({ children }: PropsWithChildren<{ inverse?: boolean }>) => {
   return <Text>{children}</Text>;
