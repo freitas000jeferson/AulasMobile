@@ -7,9 +7,9 @@ import Stack from "./stack";
 export const Router = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Routes.HOME}>
+      <Stack.Navigator initialRouteName={Routes.LOGIN}>
         {Screens.map((screen) => (
-          <Stack.Screen {...screen} />
+          <Stack.Screen key={screen.name} {...screen} />
         ))}
       </Stack.Navigator>
     </NavigationContainer>

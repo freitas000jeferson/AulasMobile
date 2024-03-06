@@ -1,29 +1,42 @@
-import React, { PropsWithChildren } from "react";
-import { Text, TouchableOpacity } from "react-native";
-import styled from "styled-components";
-const ButtonCustom = styled(TouchableOpacity)`
-  width: auto;
-  box-sizing: content-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 12px;
-  background-color: #0fd97a;
-  color: #dddddd;
-  border-radius: 8px;
-`;
+import React, { ComponentProps } from "react";
+import { TouchableOpacity } from "react-native";
+import { Colors } from "../../core/themes";
+import TextCustom from "../TextCustom";
+import { ButtonComponent, ButtonComponentProps } from "./styles";
 
-type ButtonProps = PropsWithChildren<{
-  onPress?: () => void;
+type As = "primary" | "secundary" | "tertiary" | "default";
+type ButtonProps = {
   label?: string;
-}>;
+  color?: string;
+  as?: As;
+} & ComponentProps<typeof TouchableOpacity> &
+  ButtonComponentProps;
 
-export const Button = ({ label, children, onPress }: ButtonProps) => {
+const BUTTON_DEFAULT = {
+  primary: {
+    background: Colors.primary,
+    color: Colors.neutral.lightest,
+  },
+  secundary: {
+    background: Colors.secundary,
+    color: Colors.neutral.darkest,
+  },
+  tertiary: {
+    background: Colors.tertiary,
+    color: Colors.neutral.darkest,
+  },
+  default: {
+    background: Colors.default,
+    color: Colors.neutral.lightest,
+  },
+};
+
+export const Button = ({ label, as = "default", background, color, children, onPress, ...rest }: ButtonProps) => {
   return (
-    <ButtonCustom onPress={onPress}>
-      {label && <Text>{label}</Text>}
+    <ButtonComponent background={background || BUTTON_DEFAULT[as].background} {...rest} onPress={onPress}>
+      {label && <TextCustom color={color || BUTTON_DEFAULT[as].color}>{label}</TextCustom>}
       {children}
-    </ButtonCustom>
+    </ButtonComponent>
   );
 };
 

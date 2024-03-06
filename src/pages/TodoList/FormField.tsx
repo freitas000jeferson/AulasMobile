@@ -13,18 +13,14 @@ export const FormField = ({ onPress }: FormFieldProps) => {
 
   return (
     <FieldSet>
-      <InputField
-        placeholder="Adicione um item!"
-        onChangeText={(newText) => setText(newText)}
-        defaultValue={text}
-      />
+      <InputField placeholder="Adicione um item!" onChangeText={(newText) => setText(newText)} defaultValue={text} />
       <Button
         onPress={() => {
           onPress(text);
           setText("");
         }}
       >
-        <TextCustom size="22px" fonWeight="bold" color={"#f2f2f2"}>
+        <TextCustom size="22px" fontWeight="bold" color={"#f2f2f2"}>
           <MaterialIcons name="add" color="white" size={20} />
         </TextCustom>
       </Button>
