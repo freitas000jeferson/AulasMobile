@@ -10,6 +10,7 @@ import { Border, Colors, Font, Spacing } from "../../../core/themes";
 import { ScreenUtils } from "../../../core/utils/screen-utils";
 import { GetProductsByIdService } from "../../../services/products";
 import PageLogged from "../../../templates/PageLogged";
+import { PriceByCep } from "./components/PriceByCep";
 import { ButtonContainer, DescriptionContainer, ImageContainer, OptionsContainer } from "./styles";
 
 type ProductDescriptionProps = ScreenProps<"product">;
@@ -81,6 +82,7 @@ const ProductDescription = ({ route }: ProductDescriptionProps) => {
                 <Text as="highlight">{data?.diameter}</Text>
               </Row>
             </View>
+            <PriceByCep />
             <OptionsContainer>
               <Subtitle> Quantidade:</Subtitle>
               <Row alignItems="center" gap="16px">
@@ -111,7 +113,6 @@ const ProductDescription = ({ route }: ProductDescriptionProps) => {
                 </SimpleButton>
               </Row>
             </OptionsContainer>
-            {/* <PriceByCep /> */}
           </DescriptionContainer>
         </ScrollView>
         <ButtonContainer>

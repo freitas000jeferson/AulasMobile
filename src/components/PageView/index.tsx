@@ -1,5 +1,6 @@
-import React, { ComponentProps } from "react";
-import { SafeAreaView } from "react-native";
+import React, { ComponentProps, Suspense } from "react";
+import { ActivityIndicator, SafeAreaView } from "react-native";
+import { Colors } from "../../core/themes";
 import { PageComponent } from "./styles";
 
 type PageViewProps = {
@@ -8,9 +9,11 @@ type PageViewProps = {
 
 const PageView = ({ isPadding = true, children, ...rest }: PageViewProps) => {
   return (
-    <PageComponent {...rest} isPadding={isPadding}>
-      {children}
-    </PageComponent>
+    <Suspense fallback={<ActivityIndicator size="large" color={Colors.default} />}>
+      <PageComponent {...rest} isPadding={isPadding}>
+        {children}
+      </PageComponent>
+    </Suspense>
   );
 };
 

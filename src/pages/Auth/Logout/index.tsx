@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useCallback, useEffect } from "react";
 import { Text } from "../../../components";
 import { Col } from "../../../components/Grid";
+import PageView from "../../../components/PageView";
 import LocalStorage from "../../../core/LocalStorage";
 import { STORAGE_KEYS } from "../../../core/constants/local-storage-keys";
 import PATHS from "../../../core/routes/paths";
@@ -23,9 +24,11 @@ const Logout = () => {
   }, []);
 
   return (
-    <Col height={`${ScreenUtils.height}px`} justifyContent="center">
-      <Text>Bye Bye!</Text>
-    </Col>
+    <PageView>
+      <Col height={`${ScreenUtils.height}px`} justifyContent="center">
+        <Text>Bye Bye!</Text>
+      </Col>
+    </PageView>
   );
 };
 

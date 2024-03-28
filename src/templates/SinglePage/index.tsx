@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, useEffect } from "react";
-import { LogBox, SafeAreaView, ScrollView } from "react-native";
+import React, { PropsWithChildren, Suspense, useEffect } from "react";
+import { ActivityIndicator, LogBox, SafeAreaView, ScrollView } from "react-native";
 import styled from "styled-components";
 import Footer from "../../components/Footer";
 import { Colors, Spacing } from "../../core/themes";
@@ -18,10 +18,14 @@ const SinglePage = ({ children, footer = true }: PropsWithChildren<{ footer?: bo
   }, []);
 
   return (
-    <ScrollView>
-      <Page>{children}</Page>
-      {footer && <Footer />}
-    </ScrollView>
+    <Suspense fallback={<ActivityIndicator size="large" color={Colors.default} />}>
+      <SafeAreaView>
+        <ScrollView>
+          <Page>{children}</Page>
+          {footer && <Footer />}
+        </ScrollView>
+      </SafeAreaView>
+    </Suspense>
   );
 };
 
