@@ -33,7 +33,7 @@ const Banner = ({ items }: BannerProps) => {
     <Suspense fallback={<ActivityIndicator size="large" color={Colors.default} />}>
       <View
         style={{
-          width: width,
+          width: "100%",
           height: 290,
           display: "flex",
           justifyContent: "center",
