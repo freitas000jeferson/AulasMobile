@@ -16,6 +16,12 @@ const ButtonComponent = styled(TouchableOpacity)<ButtonComponentProps>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  ${(props) => props.width && `width: ${props.width};`}
+  ${(props) => props.height && `height: ${props.height};`}
+  ${(props) => props.padding && `padding: ${props.padding};`}
+  ${(props) => props.margin && `margin: ${props.margin};`}
+  ${(props) => props.background && `background-color: ${props.background};`}
+  ${(props) => props.radius && `border-radius: ${props.radius};`}
   ${(props) => props.customStyle};
 `;
 

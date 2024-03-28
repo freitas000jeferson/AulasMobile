@@ -8,7 +8,7 @@ export const Border = {
   /** @returns 24px */
   RadiusLG: "24px",
   /** @returns 100% */
-  RadiusCircle: "100%",
+  RadiusCircle: "200000px",
   /** @returns 500px */
   RadiusPill: "500px",
   /** @returns 0px */

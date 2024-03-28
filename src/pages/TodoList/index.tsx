@@ -14,16 +14,11 @@ export const TodoList = () => {
   const [list, setList] = useState<TodoListItem[]>([]);
 
   const addItem = (text: string) => {
-    setList([
-      ...list,
-      { id: new Date().toISOString(), title: text, checked: false },
-    ]);
+    setList([...list, { id: new Date().toISOString(), title: text, checked: false }]);
   };
 
   const onChangeCheckbox = (id: string) => {
-    const updateList = list.map((item) =>
-      item.id == id ? { ...item, checked: !item.checked } : item
-    );
+    const updateList = list.map((item) => (item.id == id ? { ...item, checked: !item.checked } : item));
     setList(updateList);
   };
 
@@ -46,12 +41,9 @@ export const TodoList = () => {
 
         <FlatList
           data={list}
+          horizontal={true}
           renderItem={({ item }) => (
-            <TodoItem
-              id={item.id}
-              value={item.checked}
-              onValueChange={() => onChangeCheckbox(item.id)}
-            >
+            <TodoItem id={item.id} value={item.checked} onValueChange={() => onChangeCheckbox(item.id)}>
               {item.title}
             </TodoItem>
           )}

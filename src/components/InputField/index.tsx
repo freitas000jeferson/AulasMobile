@@ -1,10 +1,9 @@
 import { Ionicons } from "@expo/vector-icons/";
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 import { TextInput, View } from "react-native";
 import styled from "styled-components";
 import { Border, Colors, Font, Spacing } from "../../core/themes";
 
-type InputComponentProps = {};
 const FieldComponent = styled(View)`
   display: flex;
   margin: ${Spacing.StackXXS} 0px;
@@ -23,7 +22,7 @@ const IconComponent = styled(View)`
   margin-left: ${Spacing.StackXXS};
 `;
 
-const InputComponent = styled(TextInput)<InputComponentProps>`
+const InputComponent = styled(TextInput)`
   font-size: ${Font.SizeSM};
   width: auto;
   flex: 1;
@@ -35,7 +34,7 @@ type InputFieldProps = {
   icon?: Icon["name"];
 } & ComponentProps<typeof TextInput>;
 
-const InputField = ({ icon, children, ...rest }: InputFieldProps) => {
+const InputField = forwardRef<TextInput, InputFieldProps>(({ icon, children, ...rest }, ref) => {
   return (
     <FieldComponent>
       {icon && (
@@ -43,10 +42,12 @@ const InputField = ({ icon, children, ...rest }: InputFieldProps) => {
           <Ionicons name={icon} color={Colors.primary} size={30} />
         </IconComponent>
       )}
-      <InputComponent {...rest} />
+      <InputComponent ref={ref} {...rest} />
       {children}
     </FieldComponent>
   );
-};
+});
+
+InputField.displayName = "InputField";
 
 export default InputField;
